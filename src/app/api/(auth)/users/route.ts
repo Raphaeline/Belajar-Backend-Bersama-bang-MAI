@@ -98,12 +98,9 @@ export const PATCH = async (request: Request) => {
 			}
 		);
 	} catch (error) {
-		return (
-			new NextResponse("Gagal dalam mengupdate data\n" + error),
-			{
-				status: 500,
-			}
-		);
+		return new NextResponse("Gagal dalam mengupdate data\n" + error, {
+			status: 500,
+		});
 	}
 };
 
@@ -117,9 +114,7 @@ export const DELETE = async (request: Request) => {
 				JSON.stringify({
 					message: "Invalid request, ID not found",
 				}),
-				{
-					status: 400,
-				}
+				{ status: 400 }
 			);
 		}
 
@@ -128,9 +123,7 @@ export const DELETE = async (request: Request) => {
 				JSON.stringify({
 					message: "Invalid User id",
 				}),
-				{
-					status: 400,
-				}
+				{ status: 400 }
 			);
 		}
 
@@ -143,9 +136,7 @@ export const DELETE = async (request: Request) => {
 				JSON.stringify({
 					message: "User not found in database",
 				}),
-				{
-					status: 404,
-				}
+				{ status: 404 }
 			);
 		}
 
@@ -154,13 +145,9 @@ export const DELETE = async (request: Request) => {
 				message: "User is deleted",
 				user: deletedUser,
 			}),
-			{
-				status: 200,
-			}
+			{ status: 200 }
 		);
 	} catch (error) {
-		return new NextResponse("Error during deleting data : " + error, {
-			status: 500,
-		});
+		return new NextResponse("Error during deleting data : " + error, { status: 500 });
 	}
 };

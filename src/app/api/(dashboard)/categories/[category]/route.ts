@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 import { Types } from "mongoose";
 import Category from "@/lib/models/category";
 
-
 export const PATCH = async (request: Request, context: { params: any }) => {
 	const categoryById = context.params.category;
 
@@ -132,11 +131,6 @@ export const DELETE = async (request: Request, context: { params: any }) => {
 			}
 		);
 	} catch (error) {
-		return (
-			new NextResponse("Gagal dalam menghapus data\n" + error),
-			{
-				status: 500,
-			}
-		);
+		return new NextResponse("Gagal dalam menghapus data\n" + error, { status: 500 });
 	}
 };
